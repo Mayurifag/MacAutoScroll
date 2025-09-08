@@ -1,9 +1,9 @@
 # MacAutoScroll
-An extension that brings Windows-style middle-click auto-scrolling to Mac and Linux browsers
+An extension that brings Windows-style middle-click auto-scrolling to Mac and Linux browsers.
 [Chrome Web Store Link](https://chromewebstore.google.com/detail/mac-autoscroll/femlmfpifefkfnpodfflonahfggcahda)
 
-## Principles 
-This extension is supposed to be faithfull to the original feature as much as possible
+## Principles
+This extension is supposed to be faithful to the original feature as much as possible
 
 ## Features
 

@@ -3,38 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mac AutoScroll - Horizontal Only</title>
+    <title>Mac AutoScroll — Horizontal Only</title>
+    <link rel="stylesheet" href="base.css" />
     <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        background-color: #f0f0f0;
+      html,
+      body {
         overflow-x: auto;
         overflow-y: hidden;
       }
       #content {
         width: 300vw;
         height: 100vh;
-        background: linear-gradient(90deg, #e66465, #9198e5);
-        padding: 20px;
-        box-sizing: border-box;
-      }
-      .nav-link {
-        position: fixed;
-        top: 16px;
-        left: 16px;
-        background: #fff;
-        padding: 8px 16px;
-        border-radius: 6px;
-        text-decoration: none;
-        color: #333;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        background: linear-gradient(90deg, var(--d-purple), var(--d-pink));
       }
     </style>
   </head>
   <body>
-    <a class="nav-link" href="navigation.html">Back to Navigation</a>
+    <a class="nav-link" href="navigation.html">← Back</a>
+    <aside class="checks">
+      <strong>What to check</strong>
+      <ol>
+        <li>Page uses <code>body { overflow-x: auto }</code> with a 300vw
+            wide child. Body, not <code>documentElement</code>, is the
+            scroller.</li>
+        <li>Middle-click. Cursor is the <code>horizontalScroll</code>
+            two-arrow icon (left/right only).</li>
+        <li>Drag vertically — page does NOT scroll vertically; cursor stays
+            horizontal.</li>
+        <li>Drag left/right past the dead zone — page scrolls.</li>
+        <li>Cursor switches to <code>left</code> / <code>right</code>
+            single-arrow icon while moving past the dead zone.</li>
+        <li>Regression: in the original bug this page used to do nothing
+            on middle-click. The page-scroller fallback walks
+            <code>[scrollingElement, documentElement, body]</code> and
+            respects <code>overflow</code> styles.</li>
+      </ol>
+    </aside>
     <div id="content"></div>
   </body>
 </html>

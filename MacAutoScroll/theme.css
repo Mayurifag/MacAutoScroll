@@ -1,0 +1,243 @@
+:root {
+  --dracula-bg: #282a36;
+  --dracula-panel: #353746;
+  --dracula-line: #44475a;
+  --dracula-fg: #f8f8f2;
+  --dracula-comment: #6272a4;
+  --dracula-cyan: #8be9fd;
+  --dracula-green: #50fa7b;
+  --dracula-orange: #ffb86c;
+  --dracula-pink: #ff79c6;
+  --dracula-purple: #bd93f9;
+  --dracula-red: #ff5555;
+  --dracula-yellow: #f1fa8c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--dracula-bg);
+  color: var(--dracula-fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Helvetica Neue', sans-serif;
+  font-size: 13px;
+}
+
+html.popup body {
+  width: 320px;
+}
+
+.app {
+  padding: 14px 16px 18px;
+}
+
+html.options .app {
+  width: 520px;
+  max-width: 100%;
+  margin: 24px auto;
+  padding: 24px 28px 32px;
+  border: 1px solid var(--dracula-line);
+  border-radius: 12px;
+  background: var(--dracula-panel);
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dracula-purple);
+}
+
+html.options h1 {
+  font-size: 22px;
+}
+
+.subtitle {
+  margin: 0 0 14px;
+  color: var(--dracula-comment);
+  font-size: 12px;
+}
+
+html.options .subtitle {
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+fieldset {
+  border: 1px solid var(--dracula-line);
+  border-radius: 8px;
+  padding: 10px 14px 12px;
+  margin: 0 0 12px;
+  background: rgba(68, 71, 90, 0.25);
+}
+
+legend {
+  padding: 0 6px;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--dracula-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+label.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+label.row .label {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  color: var(--dracula-fg);
+}
+
+label.row .value {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  color: var(--dracula-orange);
+  min-width: 36px;
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+label.row input[type='range'] {
+  flex: 1 1 auto;
+  min-width: 0;
+  accent-color: var(--dracula-purple);
+  background: transparent;
+}
+
+label.row input[type='checkbox'] {
+  margin-left: auto;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  accent-color: var(--dracula-purple);
+}
+
+label.row:has(input[type='checkbox']) .label {
+  flex: 1 1 auto;
+  white-space: normal;
+}
+
+select,
+button {
+  font: inherit;
+}
+
+select {
+  padding: 4px 8px;
+  background: var(--dracula-line);
+  color: var(--dracula-fg);
+  border: 1px solid var(--dracula-comment);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+select:focus,
+input:focus,
+button:focus {
+  outline: 2px solid var(--dracula-purple);
+  outline-offset: 1px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 6px 12px;
+  border: 1px solid var(--dracula-comment);
+  background: var(--dracula-line);
+  color: var(--dracula-fg);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+button:hover {
+  background: var(--dracula-comment);
+}
+
+button.danger {
+  border-color: var(--dracula-red);
+  color: var(--dracula-red);
+}
+
+button.danger:hover {
+  background: var(--dracula-red);
+  color: var(--dracula-bg);
+}
+
+.status {
+  font-size: 12px;
+  color: var(--dracula-green);
+  min-height: 14px;
+  margin-left: auto;
+}
+
+a.link {
+  color: var(--dracula-cyan);
+  text-decoration: none;
+}
+
+a.link:hover {
+  text-decoration: underline;
+}
+
+html.options #open-options {
+  display: none;
+}
+
+.slider-grid {
+  display: grid;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 10px;
+  row-gap: 8px;
+  align-items: center;
+}
+
+.slider-grid label.row {
+  display: contents;
+}
+
+.slider-grid label.row > .label,
+.slider-grid label.row > input[type='range'],
+.slider-grid label.row > .value {
+  margin: 0;
+}
+
+.preview {
+  display: block;
+  width: 100%;
+  height: 80px;
+  margin: 12px 0 4px;
+  background: var(--dracula-bg);
+  border: 1px solid var(--dracula-line);
+  border-radius: 4px;
+}
+
+.preview-axis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  color: var(--dracula-comment);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.preview-axis-mid {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

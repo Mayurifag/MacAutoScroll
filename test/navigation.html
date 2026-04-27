@@ -3,45 +3,100 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mac AutoScroll - Navigation</title>
+    <title>Mac AutoScroll — Test Suite</title>
+    <link rel="stylesheet" href="base.css" />
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background: #f0f0f0;
-        margin: 0;
-        padding: 0;
+        padding: 32px 24px 64px;
+      }
+      h1 {
+        font-size: 22px;
       }
       .nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
       }
       .nav a {
         display: block;
-        margin: 16px;
-        padding: 16px 32px;
-        background: #fff;
+        padding: 14px 16px;
+        background: var(--d-line);
+        border: 1px solid var(--d-comment);
         border-radius: 8px;
         text-decoration: none;
-        color: #333;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        font-size: 1.2em;
-        transition: background 0.2s;
+        color: var(--d-fg);
+        transition: background 0.15s;
       }
       .nav a:hover {
-        background: #e0e0e0;
+        background: var(--d-comment);
+      }
+      .nav a strong {
+        display: block;
+        color: var(--d-cyan);
+        margin-bottom: 4px;
+      }
+      .nav a span {
+        font-size: 12px;
+        color: var(--d-fg);
+        opacity: 0.85;
       }
     </style>
   </head>
   <body>
-    <div class="nav">
-      <a href="index.html">Full Page Scroll (Both Directions)</a>
-      <a href="vertical.html">Vertical Only Scroll</a>
-      <a href="horizontal.html">Horizontal Only Scroll</a>
-      <a href="element-scroll.html">Scrollable Element Inside Body</a>
-      <a href="cursor-test.html">Cursor Test Page</a>
+    <div class="container">
+      <h1>Mac AutoScroll — Test Suite</h1>
+      <p class="lede">
+        Scenario pages for manual verification. Each page has a checklist
+        in the top-right corner describing what to verify.
+      </p>
+
+      <h2>Scrolling axis</h2>
+      <div class="nav">
+        <a href="index.html"
+          ><strong>Page Scroll (Both Axes)</strong
+          ><span>8-direction cursors and diagonal scroll</span></a
+        >
+        <a href="vertical.html"
+          ><strong>Vertical Only</strong
+          ><span>Vertical-scroll cursor, dead zone, easing</span></a
+        >
+        <a href="horizontal.html"
+          ><strong>Horizontal Only (body overflow)</strong
+          ><span>Body-driven horizontal scroll regression</span></a
+        >
+        <a href="smooth-scroll.html"
+          ><strong>CSS Smooth Scroll</strong
+          ><span>scroll-behavior:smooth must not fight scrollBy</span></a
+        >
+      </div>
+
+      <h2>Click handling</h2>
+      <div class="nav">
+        <a href="click-handling.html"
+          ><strong>Links + Shadow DOM</strong
+          ><span>Plain, nested, and shadow-root links open new tab</span></a
+        >
+      </div>
+
+      <h2>Scroll target selection</h2>
+      <div class="nav">
+        <a href="element-precedence.html"
+          ><strong>Element vs Page Precedence</strong
+          ><span>Toggle: page wins when scrollable; element fallback when not</span></a
+        >
+        <a href="containers.html"
+          ><strong>Iframe + Fullscreen</strong
+          ><span>Isolated scroll contexts: iframe content + fullscreen element</span></a
+        >
+      </div>
+
+      <h2>Cursor</h2>
+      <div class="nav">
+        <a href="cursor-test.html"
+          ><strong>Cursor Preview</strong
+          ><span>Visual smoke test of all 11 cursor variants</span></a
+        >
+      </div>
     </div>
   </body>
 </html>

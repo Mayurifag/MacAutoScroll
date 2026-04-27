@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mac AutoScroll — Settings</title>
+    <script src="settings-init.js"></script>
+    <script src="js/defaults.js"></script>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <div class="app">
+      <h1>Mac AutoScroll</h1>
+      <p class="subtitle">Synced across your Chrome profile.</p>
+
+      <fieldset>
+        <legend>Speed</legend>
+        <div class="slider-grid">
+          <label class="row">
+            <span class="label">Max speed</span>
+            <input type="range" id="maxSpeed" min="20" max="400" step="5" />
+            <span class="value" id="maxSpeedValue"></span>
+          </label>
+          <label class="row">
+            <span class="label">Dead zone</span>
+            <input type="range" id="deadZone" min="1" max="15" step="1" />
+            <span class="value" id="deadZoneValue"></span>
+          </label>
+          <label class="row">
+            <span class="label">Easing</span>
+            <input type="range" id="easing" min="5" max="100" step="5" />
+            <span class="value" id="easingValue"></span>
+          </label>
+        </div>
+        <svg
+          class="preview"
+          id="preview"
+          viewBox="0 0 200 80"
+          preserveAspectRatio="none"
+          aria-label="Speed curve preview"
+        ></svg>
+        <div class="preview-axis">
+          <span>0%</span>
+          <span class="preview-axis-mid">distance from click point</span>
+          <span>100%</span>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Behavior</legend>
+        <label class="row">
+          <span class="label">Middle-click on link → new tab</span>
+          <input type="checkbox" id="linkOpens" />
+        </label>
+        <label class="row">
+          <span class="label">Disable inside iframes</span>
+          <input type="checkbox" id="topFrameOnly" />
+        </label>
+      </fieldset>
+
+      <div class="actions">
+        <button id="reset" class="danger">Reset</button>
+        <a id="open-options" class="link" href="#">Open in tab →</a>
+        <span class="status" id="status"></span>
+      </div>
+    </div>
+    <script src="settings-form.js"></script>
+  </body>
+</html>

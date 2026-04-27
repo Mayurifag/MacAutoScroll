@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mac AutoScroll — Containers (iframe + fullscreen)</title>
+    <link rel="stylesheet" href="base.css" />
+    <style>
+      body {
+        padding: 80px 24px 64px;
+        min-height: 200vh;
+      }
+      .panel {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      iframe {
+        display: block;
+        width: 100%;
+        height: 320px;
+        border: 2px solid var(--d-purple);
+        border-radius: 8px;
+        background: var(--d-panel);
+      }
+      .filler {
+        line-height: 1.6;
+        color: var(--d-fg);
+        opacity: 0.85;
+      }
+      hr {
+        margin: 40px 0;
+        border: none;
+        border-top: 1px solid var(--d-line);
+      }
+      #fs {
+        margin-top: 16px;
+        height: 60vh;
+        border-radius: 12px;
+        overflow: auto;
+        cursor: pointer;
+      }
+      :fullscreen #fs {
+        height: 100vh;
+        border-radius: 0;
+      }
+      .inner {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .band {
+        height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 64px;
+        font-weight: 800;
+        color: var(--d-bg);
+        font-family: ui-monospace, monospace;
+      }
+      .band:nth-child(1)  { background: var(--d-red); }
+      .band:nth-child(2)  { background: var(--d-orange); }
+      .band:nth-child(3)  { background: var(--d-yellow); }
+      .band:nth-child(4)  { background: var(--d-green); }
+      .band:nth-child(5)  { background: var(--d-cyan); }
+      .band:nth-child(6)  { background: var(--d-purple); }
+      .band:nth-child(7)  { background: var(--d-pink); }
+      .band:nth-child(8)  { background: var(--d-orange); }
+      .band:nth-child(9)  { background: var(--d-green); }
+      .band:nth-child(10) { background: var(--d-cyan); }
+    </style>
+  </head>
+  <body>
+    <a class="nav-link" href="navigation.html">← Back</a>
+    <aside class="checks">
+      <strong>What to check</strong>
+      <ol>
+        <li><strong>Iframe (top section):</strong> manifest sets
+            <code>"all_frames": true</code>; the content script runs
+            inside the iframe.</li>
+        <li>Middle-click <em>inside</em> the iframe → iframe content
+            scrolls (overlay + cursor live inside the iframe).</li>
+        <li>Middle-click on the dark page area outside the iframe →
+            outer page scrolls (use the filler text).</li>
+        <li>In Settings, enable <strong>Disable inside iframes</strong>.
+            Reload. Middle-click inside the iframe should now do nothing;
+            outside still scrolls.</li>
+        <li><strong>Fullscreen (bottom section):</strong> click
+            <strong>Enter fullscreen</strong>. Numbered colored bands
+            cover the screen.</li>
+        <li>Middle-click inside fullscreen — overlay attaches to
+            <code>document.fullscreenElement</code>, cursor visible.
+            Drag down — bands cycle 1 → 2 → 3 →… so scroll progress is
+            unmistakable.</li>
+        <li>Press <code>Esc</code> — overlay tears down cleanly. Re-test
+            middle-click in normal mode after exit.</li>
+      </ol>
+    </aside>
+    <div class="panel">
+      <h1>Containers</h1>
+      <p class="lede">
+        Two isolated scroll contexts: a same-origin iframe and a
+        fullscreen target.
+      </p>
+
+      <h2>Iframe</h2>
+      <iframe src="vertical.html" title="Embedded vertical page"></iframe>
+      <div class="filler">
+        <p>Outer-page filler text. Middle-click here to scroll the outer
+          page rather than the iframe content.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+
+      <hr />
+
+      <h2>Fullscreen API</h2>
+      <button class="btn btn-accent" onclick="document.getElementById('fs').requestFullscreen()">
+        Enter fullscreen
+      </button>
+      <div id="fs">
+        <div class="inner">
+          <div class="band">1</div>
+          <div class="band">2</div>
+          <div class="band">3</div>
+          <div class="band">4</div>
+          <div class="band">5</div>
+          <div class="band">6</div>
+          <div class="band">7</div>
+          <div class="band">8</div>
+          <div class="band">9</div>
+          <div class="band">10</div>
+        </div>
+      </div>
+
+      <p class="center" style="margin-top: 60vh;">— bottom of outer page —</p>
+    </div>
+  </body>
+</html>

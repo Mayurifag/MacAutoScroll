@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mac AutoScroll Extension Test Page</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mac AutoScroll — Page Scroll (Both Axes)</title>
+    <link rel="stylesheet" href="base.css" />
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        #content {
-            width: 300vw;
-            height: 300vh;
-            background: linear-gradient(45deg, #e66465, #9198e5);
-            padding: 20px;
-            box-sizing: border-box;
-        }
+      #content {
+        width: 300vw;
+        height: 300vh;
+        background: linear-gradient(45deg, var(--d-purple), var(--d-pink), var(--d-cyan));
+      }
     </style>
-</head>
-<body>
-    <a
-      class="nav-link"
-      href="navigation.html"
-      style="
-        position: fixed;
-        top: 16px;
-        left: 16px;
-        background: #fff;
-        padding: 8px 16px;
-        border-radius: 6px;
-        text-decoration: none;
-        color: #333;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      "
-      >Back to Navigation</a
-    >
+  </head>
+  <body>
+    <a class="nav-link" href="navigation.html">← Back</a>
+    <aside class="checks">
+      <strong>What to check</strong>
+      <ol>
+        <li>Middle-click on the gradient. Cursor turns into the
+            <code>autoScroll</code> 4-arrow icon. Initial dot is exactly under
+            the click point.</li>
+        <li>Drag in 8 directions (up, down, left, right, and the four
+            diagonals). Cursor swaps to the matching arrow icon and the page
+            scrolls in that direction.</li>
+        <li>Move to the very edge of the screen — speed caps (does not run
+            away). Move just barely past the dead zone — scroll is slow.</li>
+        <li>Toggle mode: middle-click and release without moving. Scroll
+            stays active. Move mouse to scroll. Click any button to stop.</li>
+        <li>Drag mode: middle-click, hold, move. Release the button — scroll
+            stops on <code>mouseup</code>.</li>
+        <li>Press any key during scroll — scroll stops.</li>
+        <li>Right-click during scroll — context menu does NOT appear; scroll
+            stops.</li>
+        <li>Switch to another tab — scroll stops on <code>blur</code>.</li>
+      </ol>
+    </aside>
     <div id="content"></div>
-</body>
+  </body>
 </html>

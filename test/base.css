@@ -1,0 +1,151 @@
+:root {
+  --d-bg: #282a36;
+  --d-panel: #353746;
+  --d-line: #44475a;
+  --d-fg: #f8f8f2;
+  --d-comment: #6272a4;
+  --d-cyan: #8be9fd;
+  --d-green: #50fa7b;
+  --d-orange: #ffb86c;
+  --d-pink: #ff79c6;
+  --d-purple: #bd93f9;
+  --d-red: #ff5555;
+  --d-yellow: #f1fa8c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--d-bg);
+  color: var(--d-fg);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Helvetica Neue', sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  color: var(--d-purple);
+  margin: 0 0 6px;
+}
+
+h2 {
+  color: var(--d-pink);
+  margin: 24px 0 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p.lede {
+  color: var(--d-comment);
+  margin: 0 auto 20px;
+  max-width: 600px;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.nav-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 11;
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--d-line);
+  color: var(--d-fg);
+  border: 1px solid var(--d-comment);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.nav-link:hover {
+  background: var(--d-comment);
+}
+
+.checks {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  max-width: 320px;
+  z-index: 10;
+  background: var(--d-panel);
+  color: var(--d-fg);
+  border: 1px solid var(--d-line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 12px;
+  line-height: 1.45;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.checks strong {
+  color: var(--d-purple);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.checks ol {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.checks li + li {
+  margin-top: 4px;
+}
+
+.checks code {
+  background: var(--d-line);
+  color: var(--d-yellow);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+.btn {
+  font: inherit;
+  padding: 8px 14px;
+  border: 1px solid var(--d-comment);
+  background: var(--d-line);
+  color: var(--d-fg);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--d-comment);
+}
+
+.btn-accent {
+  border-color: var(--d-purple);
+  color: var(--d-purple);
+}
+
+.btn-accent:hover {
+  background: var(--d-purple);
+  color: var(--d-bg);
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+a.inline {
+  color: var(--d-cyan);
+}
+
+.scroll-tall {
+  height: 1200px;
+}

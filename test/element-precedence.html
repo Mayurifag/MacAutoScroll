@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mac AutoScroll — Element vs page precedence</title>
+    <link rel="stylesheet" href="base.css" />
+    <style>
+      html.locked,
+      html.locked body {
+        height: 100vh;
+        overflow: hidden;
+      }
+      body {
+        padding: 80px 24px 32px;
+        min-height: 220vh;
+      }
+      .toolbar {
+        text-align: center;
+        margin: 8px 0 18px;
+      }
+      .state {
+        display: inline-block;
+        margin-left: 12px;
+        font-family: ui-monospace, monospace;
+        font-size: 12px;
+        color: var(--d-comment);
+      }
+      .box {
+        width: 80%;
+        max-width: 600px;
+        height: 320px;
+        margin: 24px auto;
+        border: 2px solid var(--d-purple);
+        border-radius: 10px;
+        overflow: auto;
+        background: var(--d-panel);
+        padding: 16px;
+      }
+      .tall {
+        height: 1200px;
+        background: linear-gradient(180deg, var(--d-purple), var(--d-pink));
+        border-radius: 6px;
+        padding: 16px;
+        color: var(--d-bg);
+      }
+      .footer {
+        text-align: center;
+        color: var(--d-comment);
+        margin-top: 80vh;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="nav-link" href="navigation.html">← Back</a>
+    <aside class="checks">
+      <strong>What to check</strong>
+      <ol>
+        <li>Two scenarios on one page; toggle button switches between them.</li>
+        <li><strong>Page scrollable (default):</strong> body is ≈220vh.
+            Middle-click anywhere — including inside the box — scrolls THE
+            PAGE. The inner box does NOT scroll. Page wins when both can
+            scroll.</li>
+        <li><strong>Page locked:</strong> click the toggle. Page now has
+            <code>overflow: hidden</code>. Middle-click outside the box
+            does nothing. Middle-click inside the box scrolls the box —
+            fallback to nearest scrollable ancestor when the page itself
+            cannot scroll.</li>
+        <li>Verify cursor is <code>verticalScroll</code> in both modes.</li>
+      </ol>
+    </aside>
+    <h1 class="center">Element vs page precedence</h1>
+    <p class="lede center">
+      Both the page and the inner box are scrollable. Toggle the page's
+      scrollability to see how auto-scroll picks its target.
+    </p>
+    <div class="toolbar">
+      <button class="btn btn-accent" id="toggle">Lock page scroll</button>
+      <span class="state" id="state">page: scrollable</span>
+    </div>
+    <div class="box">
+      <div class="tall">
+        Tall content inside the box. (When page is scrollable, this stays
+        put on middle-click. When page is locked, this scrolls.)
+      </div>
+    </div>
+    <p class="footer">— bottom of long page —</p>
+    <script>
+      const btn = document.getElementById('toggle');
+      const state = document.getElementById('state');
+      btn.addEventListener('click', () => {
+        const locked = document.documentElement.classList.toggle('locked');
+        btn.textContent = locked ? 'Unlock page scroll' : 'Lock page scroll';
+        state.textContent = locked ? 'page: locked' : 'page: scrollable';
+      });
+    </script>
+  </body>
+</html>

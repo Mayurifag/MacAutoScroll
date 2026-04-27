@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mac AutoScroll — Click handling</title>
+    <link rel="stylesheet" href="base.css" />
+    <style>
+      body {
+        padding: 80px 24px 200vh;
+      }
+      .stack {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .link {
+        display: inline-block;
+        padding: 12px 18px;
+        margin: 8px 8px 8px 0;
+        background: var(--d-line);
+        color: var(--d-cyan);
+        border: 1px solid var(--d-comment);
+        border-radius: 8px;
+        text-decoration: none;
+      }
+      .link:hover {
+        background: var(--d-comment);
+      }
+      .nested {
+        display: inline-block;
+        padding: 14px 18px;
+        margin: 8px 8px 8px 0;
+        background: var(--d-purple);
+        color: var(--d-bg);
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .nested span {
+        text-decoration: underline;
+      }
+      shadow-host {
+        display: block;
+        margin: 16px 0;
+        padding: 18px;
+        background: var(--d-panel);
+        border-radius: 10px;
+        border: 2px dashed var(--d-pink);
+      }
+      .gap {
+        height: 80vh;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="nav-link" href="navigation.html">← Back</a>
+    <aside class="checks">
+      <strong>What to check</strong>
+      <ol>
+        <li>Middle-click on a plain link → opens in new tab; auto-scroll
+            does NOT activate.</li>
+        <li>Middle-click on the nested link (text inside an <code>&lt;a&gt;</code>)
+            → opens in new tab. <code>composedPath</code> finds the
+            ancestor anchor.</li>
+        <li>Middle-click on the link inside the pink-bordered shadow root
+            → opens in new tab. <code>composedPath</code> traverses the
+            open shadow boundary.</li>
+        <li>Middle-click on the dark background or pink dashed area
+            (no link) → auto-scroll activates and the page scrolls.</li>
+        <li>Open Settings, uncheck "Middle-click on link → new tab".
+            Reload. Now middle-click on any link starts auto-scroll
+            instead of opening a new tab.</li>
+        <li>Right-click during auto-scroll on dark area → scroll stops,
+            no context menu.</li>
+      </ol>
+    </aside>
+    <div class="stack">
+      <h1>Click handling</h1>
+
+      <h2>Plain links</h2>
+      <p>
+        <a class="link" href="https://example.com">External link (example.com)</a>
+        <a class="link" href="navigation.html">Internal link (navigation)</a>
+      </p>
+
+      <h2>Nested-text link</h2>
+      <p>
+        <a class="nested" href="https://example.org">
+          Nested: <span>this inner span</span> still triggers the link
+        </a>
+      </p>
+      <p>And inline: <a class="inline" href="https://example.net">surrounded by text</a>.</p>
+
+      <h2>Shadow DOM link</h2>
+      <shadow-host id="host"></shadow-host>
+
+      <p>Middle-click anywhere on the dark background (avoiding links) to
+        test page autoscroll.</p>
+      <div class="gap"></div>
+      <p>(scroll target — keep going to verify the page is tall enough)</p>
+    </div>
+    <script>
+      const host = document.getElementById('host');
+      const shadow = host.attachShadow({ mode: 'open' });
+      shadow.innerHTML = `
+        <style>
+          :host { font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: #f8f8f2; }
+          a { color: #ff79c6; text-decoration: underline; font-weight: 600; }
+          p { margin: 0 0 8px; }
+        </style>
+        <p>This text and link live inside an open shadow root:</p>
+        <a href="https://example.org">Open example.org (inside shadow root)</a>
+      `;
+    </script>
+  </body>
+</html>

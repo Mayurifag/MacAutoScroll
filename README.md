@@ -58,6 +58,7 @@ It also tries not to conflict with other extensions or site-specific scripts. Fo
 
 ## Notes
 
+* On Windows, the extension's content scripts are not registered at all (the background service worker checks the platform and skips registration), since Chrome already provides native middle-click autoscroll.
 * On Linux, some Chromium builds include a native middle-click autoscroll under the `Use a touchpad-style middle-click autoscroll` flag (`chrome://flags/#middle-click-autoscroll`). Disable it if you prefer this extension.
 * Mac trackpads do not have a native middle button; pair with a third-party utility (e.g., MiddleClick, BetterTouchTool) to send middle-click events.
 

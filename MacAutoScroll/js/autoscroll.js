@@ -84,6 +84,7 @@ document.addEventListener(
       typeof e.composedPath === 'function' ? e.composedPath() : [e.target];
 
     if (settings.linkOpensNewTab && isLinkClick(path)) return;
+    if (isVideoClick(path)) return;
 
     const target = resolveScrollTarget(path);
     if (!target) return;

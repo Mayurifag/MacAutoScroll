@@ -133,6 +133,21 @@ function isLinkClick(path) {
   return false;
 }
 
+function isVideoClick(path) {
+  for (const node of path) {
+    if (!node || node.nodeType !== 1) continue;
+    if (node === document.body || node === document.documentElement) break;
+    if (node.tagName === 'VIDEO') return true;
+    const children = node.children;
+    if (children) {
+      for (let i = 0; i < children.length; i++) {
+        if (children[i].tagName === 'VIDEO') return true;
+      }
+    }
+  }
+  return false;
+}
+
 function preventScrolling(e) {
   e.preventDefault();
   e.stopPropagation();

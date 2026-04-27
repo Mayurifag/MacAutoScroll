@@ -4,7 +4,9 @@ An extension that brings Windows-style middle-click auto-scrolling to Mac and Li
 [Chrome Web Store Link](https://chromewebstore.google.com/detail/mac-autoscroll/femlmfpifefkfnpodfflonahfggcahda)
 
 ## Principles
-This extension is supposed to be faithful to the original feature as much as possible
+This extension is supposed to be faithful to the original feature as much as possible.
+
+It also tries not to conflict with other extensions or site-specific scripts. For example, middle-click is skipped over `<video>` elements so player extensions like FrankerFaceZ on Twitch (middle-click = mute) keep working.
 
 ## Features
 
